@@ -1,0 +1,48 @@
+// A copy of the functions used to determine the background colour of the code block
+// https://github.com/discourse/discourse/blob/3dcad123f5a7cf0de3c4a57554a752b96a214943/app/assets/stylesheets/common/foundation/variables.scss
+@function brightness($color) {
+  @return ((red($color) * .299) + (green($color) * .587) + (blue($color) * .114));
+}
+
+@function dark-light-choose($light-theme-result, $dark-theme-result) {
+  @if brightness($primary) < brightness($secondary) {
+    @return $light-theme-result;
+  } @else {
+    @return $dark-theme-result;
+  }
+}
+
+// CSS for clipboard
+.bd-clipboard {
+  background-color: dark-light-choose(#f8f8f8, #333333);
+  display: none;
+  position: relative;
+  text-align: right;
+  text-align: end;
+  white-space: nowrap;
+}
+
+.bd-clipboard + pre {
+  margin-top: 0;
+}
+
+@media (min-width: 768px) {
+  .bd-clipboard {
+    display: block;
+  }
+}
+
+.btn-clipboard {
+  background-color: transparent;
+  border-radius: 2px;
+  color: dark-light-choose(#333333, #f8f8f8);
+  cursor: default;
+  display: inline-block;
+  font-size: .857142857em;
+  padding: 0.25em 0.4em;
+}
+
+.btn-clipboard:hover {
+  background-color: $tertiary;
+  color: $secondary;
+}

@@ -1,0 +1,35 @@
+<!-- JavaScript for clipboard -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.6.0/clipboard.min.js"></script>
+<script type="text/discourse-plugin" version="0.8">
+  api.decorateCooked(
+    $elem => $('pre', $elem).each(function () {
+      // Add copy button to code block
+      $(this).wrap('<div class="code-highlight"></div>').before('<div class="bd-clipboard"><span class="btn-clipboard">Copy</span></div>')
+      
+      // Initialise clipboard
+      var clipboard = new Clipboard('.btn-clipboard', {
+        target: function (trigger) {
+          return trigger.parentNode.nextElementSibling
+        }
+      })
+    
+      // Update text of the copy button
+      clipboard.on('error', function (e) {
+        var modifierKey = /Mac/i.test(navigator.userAgent) ? '\u2318' : 'Ctrl-'
+        var fallbackMsg = 'Press ' + modifierKey + 'C to copy'
+        
+        $(e.trigger).text(fallbackMsg)
+      })
+      
+      clipboard.on('success', function (e) {
+        $(e.trigger).text('Copied!')
+        e.clearSelection()
+      })
+    })
+  )
+
+  // Revert back text of the copy button
+  $(document).on('mouseleave', '.btn-clipboard', function () {
+    $(this).text('Copy')
+  })
+</script>
