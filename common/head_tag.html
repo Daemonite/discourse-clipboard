@@ -11,6 +11,10 @@
 <script type="text/discourse-plugin" version="0.8">
   api.decorateCooked(
     $elem => $('pre', $elem).each(function () {
+      if ($(this).parent('.code-highlight').length === 1) {
+        return;
+      }
+
       // Add copy button to code block
       $(this).wrap('<div class="code-highlight"></div>').before('<div class="bd-clipboard"><span class="btn-clipboard">Copy</span></div>')
       
