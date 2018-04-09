@@ -15,7 +15,7 @@
 // CSS for clipboard
 .bd-clipboard {
   background-color: dark-light-choose(#f8f8f8, #333333);
-  display: none;
+  display: block;
   position: relative;
   text-align: right;
   text-align: end;
@@ -24,12 +24,6 @@
 
 .bd-clipboard + pre {
   margin-top: 0;
-}
-
-@media (min-width: 768px) {
-  .bd-clipboard {
-    display: block;
-  }
 }
 
 .btn-clipboard {
