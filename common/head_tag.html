@@ -10,7 +10,7 @@
 </script>
 <script type="text/discourse-plugin" version="0.8">
   api.decorateCooked(
-    $elem => $('pre', $elem).each(function () {
+    $elem => $('pre > code', $elem).each(function () {
       if ($(this).parent('.code-highlight').length === 1) {
         return;
       }
