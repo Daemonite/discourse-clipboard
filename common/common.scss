@@ -1,32 +1,82 @@
 // CSS for clipboard
 .bd-clipboard {
   display: block;
+  line-height: 1;
+  margin-top: -1px;
   position: absolute;
-  top: .25em;
+  top: .5em;
   right: .25em;
-  text-align: right;
-  text-align: end;
   white-space: nowrap;
-}
-
-.bd-clipboard + pre {
-  margin-top: 0;
-  margin-bottom: 0;
 }
 
 .btn-clipboard {
   background-color: transparent;
-  border-radius: 2px;
-  color: inherit;
-  cursor: default;
-  display: inline-block;
-  font-size: .857142857em;
-  padding: .25em .4em;
+  border: 0;
+  display: block;
+  line-height: 1;
+  outline: 0;
+  padding: 0;
+  position: relative;
 }
 
-.btn-clipboard:hover {
-  background-color: $tertiary;
-  color: $secondary;
+.btn-clipboard-icon {
+  display: block;
+  fill: currentColor;
+  height: 1.428572em;
+  line-height: 1;
+  opacity: .12;
+  position: relative;
+  transition-duration: .3s;
+  transition-property: color, fill, opacity;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  width: 1.428572em;
+
+  &:hover {
+    color: $tertiary;
+    fill: $tertiary;
+    opacity: 1 !important;
+  }
+
+  .code-highlight:hover & {
+    opacity: .54;
+  }
+}
+
+.btn-clipboard-tooltip {
+  background-color: rgba(0, 0, 0, .54);
+  border-radius: 2px;
+  color: #ffffff;
+  font-size: .857143em;
+  line-height: 1;
+  margin-right: .5em;
+  opacity: 0;
+  padding: ((1.428572em - .857143em) / 2) .75em;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  right: 100%;
+  transform: translateX(.5em);
+  transition-duration: .3s;
+  transition-property: color, transform;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+
+  &::after {
+    border-color: transparent rgba(0, 0, 0, .54);
+    border-style: solid;
+    border-width: .25em 0 .25em .25em;
+    content: '';
+    display: block;
+    margin-top: -.25em;
+    position: absolute;
+    top: 50%;
+    right: -.25em;
+    width: 0;
+  }
+
+  .btn-clipboard:hover & {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .code-highlight {
@@ -34,7 +84,12 @@
   margin-bottom: 1em;
   position: relative;
 
-  pre > code {
-    padding-top: (.857142857em * 1.4 + .5em + .25em);
+  pre {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .hljs {
+    padding-right: (1.428572em + .5em);
   }
 }
