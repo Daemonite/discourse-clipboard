@@ -1,3 +1,11 @@
+@function color-dynamic($color) {
+  @if lightness($color) > 75 {
+    @return #000000;
+  } @else {
+    @return #ffffff;
+  }
+}
+
 // CSS for clipboard
 .bd-clipboard {
   display: block;
@@ -31,7 +39,7 @@
   transition-timing-function: cubic-bezier(.4, 0, .2, 1);
   width: 1.428572em;
 
-  &:hover {
+  .btn-clipboard:hover & {
     color: $tertiary;
     fill: $tertiary;
     opacity: 1 !important;
@@ -43,9 +51,9 @@
 }
 
 .btn-clipboard-tooltip {
-  background-color: rgba(0, 0, 0, .54);
+  background-color: rgba($tertiary, .87);
   border-radius: 2px;
-  color: #ffffff;
+  color: color-dynamic($tertiary);
   font-size: .857143em;
   line-height: 1;
   margin-right: .5em;
@@ -61,7 +69,7 @@
   transition-timing-function: cubic-bezier(.4, 0, .2, 1);
 
   &::after {
-    border-color: transparent rgba(0, 0, 0, .54);
+    border-color: transparent rgba($tertiary, .87);
     border-style: solid;
     border-width: .25em 0 .25em .25em;
     content: '';
