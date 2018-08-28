@@ -11,7 +11,7 @@
 
 <script type="text/discourse-plugin" version="0.8">
 $.fn.clipboardButton = function() {
-  var $pre = $(this).find("code");
+  var $pre = $(this).find("pre>code");
   if ($pre.parent(".code-highlight").length === 1) {
     return;
   }
