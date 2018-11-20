@@ -1,5 +1,6 @@
 {
   "about_url": "https://github.com/Daemonite/discourse-clipboard",
   "license_url": "https://github.com/Daemonite/discourse-clipboard/blob/master/LICENSE",
-  "name": "Add a COPY TO CLIPBOARD feature for Discourse code blocks"
+  "name": "Add a COPY TO CLIPBOARD feature for Discourse code blocks",
+  "component": true
 }
